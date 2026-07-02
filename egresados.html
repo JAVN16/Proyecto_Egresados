@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro de egresado</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="encabezado">
+
+            <img src="assets/img/logo-cenfotec.png" alt="Logo Universidad CENFOTEC">
+
+            <div>
+
+                <h1>Portal de Egresados</h1>
+
+                <h3>Universidad CENFOTEC</h3>
+
+                <p>
+                    Espacio destinado al registro y actualización de información de los egresados de la universidad.
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="login.html">Iniciar sesión</a></li>
+            <li><a href="perfil.html">Mi perfil</a></li>
+            <li><a href="egresados.html">Egresados</a></li>
+            <li><a href="carreras.html">Carreras</a></li>
+
+        </ul>
+
+    </nav>
+
+<main>
+
+    <section class="formulario">
+
+        <h2>Registro de egresado</h2>
+
+        <p class="descripcion-formulario">
+            Complete la información solicitada para registrar un nuevo egresado dentro del sistema.
+        </p>
+
+        <form>
+
+            <fieldset>
+
+                <legend>Información personal</legend>
+
+                <div>
+
+                    <label for="nombre">
+                        Nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Ingrese el nombre"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="apellido">
+                        Apellidos
+                    </label>
+
+                    <input
+                        type="text"
+                        id="apellido"
+                        placeholder="Ingrese los apellidos"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="identificacion">
+                        Identificación
+                    </label>
+
+                    <input
+                        type="text"
+                        id="identificacion"
+                        placeholder="Ejemplo: 1-2345-6789"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="fechaNacimiento">
+                        Fecha de nacimiento
+                    </label>
+
+                    <input
+                        type="date"
+                        id="fechaNacimiento"
+                        required>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <legend>Información de contacto</legend>
+
+                <div>
+
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        placeholder="usuario@correo.com"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="telefono">
+                        Teléfono
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefono"
+                        placeholder="8888-8888"
+                        required>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <legend>Información académica</legend>
+
+                <div>
+
+                    <label for="carrera">
+                        Carrera
+                    </label>
+
+                    <input
+                        type="text"
+                        id="carrera"
+                        placeholder="Seleccione o escriba la carrera"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="titulo">
+                        Título obtenido
+                    </label>
+
+                    <input
+                        type="text"
+                        id="titulo"
+                        placeholder="Ejemplo: Técnico en Desarrollo de Software"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="graduacion">
+                        Año de graduación
+                    </label>
+
+                    <input
+                        type="number"
+                        id="graduacion"
+                        min="1980"
+                        max="2100"
+                        placeholder="2026"
+                        required>
+
+                </div>
+
+            </fieldset>
+
+            <button type="submit">
+
+                Registrar egresado
+
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+    <footer>
+
+        <p>Portal de Egresados - Universidad CENFOTEC</p>
+
+        <br>
+
+        <p>
+            Proyecto académico | Diseño y Programación Web
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

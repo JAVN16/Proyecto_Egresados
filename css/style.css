@@ -1,0 +1,277 @@
+/* ============================
+   ENCABEZADO
+============================ */
+
+header{
+    background-color: #2e7d32;
+    color: white;
+    padding: 14px;
+}
+
+header h1{
+    margin-bottom: 8px;
+}
+
+header img{
+    height:60px;
+    margin-right:20px;
+}
+
+.encabezado div{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+/* ============================
+   LOGO DEL ENCABEZADO
+============================ */
+
+.encabezado{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.encabezado img{
+    width: 120px;
+    height: auto;
+}
+
+.encabezado h3{
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+/* ============================
+   MENÚ
+============================ */
+
+nav{
+    background-color: #256428;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav li{
+    margin: 0 15px;
+}
+
+nav a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+}
+
+nav a:hover{
+    background-color: #3d9140;
+}
+
+/* ============================
+   CONTENIDO
+============================ */
+
+main{
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+/* ============================
+   TARJETAS
+============================ */
+
+.tarjeta{
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #d8d8d8;
+}
+.tarjeta h2{
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.tarjeta h3{
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+/* ============================
+   FLEXBOX
+============================ */
+
+.contenedor-flex{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.columna{
+    flex: 1;
+    min-width: 250px;
+}
+
+/* ============================
+   BOTONES
+============================ */
+
+button{
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #256428;
+}
+
+/* ============================
+   PIE DE PÁGINA
+============================ */
+
+footer{
+    margin-top: 40px;
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ============================
+   UTILIDADES
+============================ */
+
+.texto-centro{
+    text-align: center;
+}
+
+.margen-superior{
+    margin-top: 20px;
+}
+
+/* ============================
+   FORMULARIOS
+============================ */
+
+.formulario{
+
+    max-width:520px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border:1px solid #d8d8d8;
+    border-radius:8px;
+
+}
+
+.formulario h2{
+
+    color:#2e7d32;
+    margin-bottom:10px;
+
+}
+
+.descripcion-formulario{
+
+    margin-bottom:25px;
+
+}
+
+.formulario form{
+
+    margin-top:20px;
+
+}
+
+.formulario fieldset{
+
+    border:1px solid #d8d8d8;
+    border-radius:6px;
+    padding:20px;
+    margin-bottom:20px;
+
+}
+
+.formulario legend{
+
+    color:#2e7d32;
+    font-weight:bold;
+    padding:0 8px;
+
+}
+
+.formulario div{
+
+    margin-bottom:15px;
+
+}
+
+.formulario label{
+
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+    color:#2e7d32;
+
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea{
+
+    width:100%;
+    padding:8px;
+    border:1px solid #cfcfcf;
+    border-radius:5px;
+    font-size:16px;
+    box-sizing:border-box;
+
+}
+
+.formulario textarea{
+
+    resize:vertical;
+
+}
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus{
+
+    outline:none;
+    border:1px solid #2e7d32;
+
+}
+
+.formulario button{
+
+    width:100%;
+    padding:12px;
+    background:#2e7d32;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+    transition:background-color 0.2s;
+
+}
+
+.formulario button:hover{
+
+    background:#256428;
+
+}

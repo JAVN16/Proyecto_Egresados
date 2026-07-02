@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="encabezado">
+
+            <img src="assets/img/logo-cenfotec.png" alt="Logo Universidad CENFOTEC">
+
+            <div>
+
+                <h1>Portal de Egresados</h1>
+
+                <h3>Universidad CENFOTEC</h3>
+
+                <p>
+                    Espacio destinado al registro y actualización de información de los egresados de la universidad.
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="login.html">Iniciar sesión</a></li>
+            <li><a href="perfil.html">Mi perfil</a></li>
+            <li><a href="egresados.html">Egresados</a></li>
+            <li><a href="carreras.html">Carreras</a></li>
+
+        </ul>
+
+    </nav>
+
+<main>
+
+    <section class="formulario">
+
+        <h2>Registro de carrera</h2>
+
+        <p class="descripcion-formulario">
+            Complete la información para registrar una nueva carrera dentro del sistema.
+        </p>
+
+        <form>
+
+            <fieldset>
+
+                <legend>Información de la carrera</legend>
+
+                <div>
+
+                    <label for="nombreCarrera">
+                        Nombre de la carrera
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombreCarrera"
+                        placeholder="Ejemplo: Desarrollo de Software"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="codigoCarrera">
+                        Código de la carrera
+                    </label>
+
+                    <input
+                        type="text"
+                        id="codigoCarrera"
+                        placeholder="Ejemplo: DS-001"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="escuela">
+                        Escuela
+                    </label>
+
+                    <input
+                        type="text"
+                        id="escuela"
+                        placeholder="Ejemplo: Escuela de Tecnología"
+                        required>
+
+                </div>
+
+                <div>
+
+                    <label for="duracion">
+                        Duración (años)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="duracion"
+                        min="1"
+                        max="10"
+                        placeholder="Ejemplo: 2"
+                        required>
+
+                </div>
+
+            </fieldset>
+
+            <button type="submit">
+                Registrar carrera
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+    <footer>
+
+        <p>Portal de Egresados - Universidad CENFOTEC</p>
+
+        <br>
+
+        <p>
+            Proyecto académico | Diseño y Programación Web
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
