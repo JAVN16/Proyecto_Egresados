@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registro de carrera</title>
+    <title>Gestión de carreras</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -50,91 +50,108 @@
 
     </nav>
 
-<main>
+    <main>
 
-    <section class="formulario">
+        <section class="formulario">
 
-        <h2>Registro de carrera</h2>
+            <h2>Gestión de carreras</h2>
 
-        <p class="descripcion-formulario">
-            Complete la información para registrar una nueva carrera dentro del sistema.
-        </p>
+            <p class="descripcion-formulario">
+                Complete la información para registrar o actualizar una carrera dentro del sistema.
+            </p>
 
-        <form>
+            <form id="formCarrera">
 
-            <fieldset>
+                <fieldset>
 
-                <legend>Información de la carrera</legend>
+                    <legend>Información de la carrera</legend>
 
-                <div>
+                    <div>
 
-                    <label for="nombreCarrera">
-                        Nombre de la carrera
-                    </label>
+                        <label for="nombreCarrera">
+                            Nombre de la carrera
+                        </label>
 
-                    <input
-                        type="text"
-                        id="nombreCarrera"
-                        placeholder="Ejemplo: Desarrollo de Software"
-                        required>
+                        <input
+                            type="text"
+                            id="nombreCarrera"
+                            placeholder="Ejemplo: Desarrollo de Software">
 
-                </div>
+                        <p id="errorNombreCarrera" class="mensaje-error"></p>
 
-                <div>
+                    </div>
 
-                    <label for="codigoCarrera">
-                        Código de la carrera
-                    </label>
+                    <div>
 
-                    <input
-                        type="text"
-                        id="codigoCarrera"
-                        placeholder="Ejemplo: DS-001"
-                        required>
+                        <label for="codigoCarrera">
+                            Código de la carrera
+                        </label>
 
-                </div>
+                        <input
+                            type="text"
+                            id="codigoCarrera"
+                            placeholder="Ejemplo: DS-001">
 
-                <div>
+                        <p id="errorCodigoCarrera" class="mensaje-error"></p>
 
-                    <label for="escuela">
-                        Escuela
-                    </label>
+                    </div>
 
-                    <input
-                        type="text"
-                        id="escuela"
-                        placeholder="Ejemplo: Escuela de Tecnología"
-                        required>
+                    <div>
 
-                </div>
+                        <label for="escuela">
+                            Escuela
+                        </label>
 
-                <div>
+                        <input
+                            type="text"
+                            id="escuela"
+                            placeholder="Ejemplo: Escuela de Tecnología">
 
-                    <label for="duracion">
-                        Duración (años)
-                    </label>
+                        <p id="errorEscuela" class="mensaje-error"></p>
 
-                    <input
-                        type="number"
-                        id="duracion"
-                        min="1"
-                        max="10"
-                        placeholder="Ejemplo: 2"
-                        required>
+                    </div>
 
-                </div>
+                    <div>
 
-            </fieldset>
+                        <label for="duracion">
+                            Duración (años)
+                        </label>
 
-            <button type="submit">
-                Registrar carrera
-            </button>
+                        <input
+                            type="number"
+                            id="duracion"
+                            placeholder="Ejemplo: 2">
 
-        </form>
+                        <p id="errorDuracion" class="mensaje-error"></p>
 
-    </section>
+                    </div>
 
-</main>
+                </fieldset>
+
+                <button type="submit" id="botonCarrera">
+                    Registrar carrera
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <section class="tarjeta">
+
+            <h2>Carreras registradas</h2>
+
+            <p>
+                Consulte, edite o elimine las carreras registradas en el sistema.
+            </p>
+
+            <div id="listaCarreras" class="lista-registros">
+
+            </div>
+
+        </section>
+
+    </main>
 
     <footer>
 
@@ -147,6 +164,8 @@
         </p>
 
     </footer>
+
+    <script src="js/carreras.js"></script>
 
 </body>
 
