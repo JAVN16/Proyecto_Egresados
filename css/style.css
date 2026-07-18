@@ -275,3 +275,75 @@ footer{
     background:#256428;
 
 }
+
+/* ============================
+   MENSAJES DE ERROR
+============================ */
+
+.mensaje-error{
+
+    color:#c62828;
+    font-size:14px;
+    margin-top:5px;
+
+}
+
+.formulario .input-error{
+
+    border:1px solid #c62828;
+
+}
+
+
+/* ============================
+   LISTA DE REGISTROS
+============================ */
+
+.lista-registros{
+
+    margin-top:20px;
+
+}
+
+.registro{
+
+    border:1px solid #d8d8d8;
+    border-radius:6px;
+    padding:15px;
+    margin-bottom:15px;
+
+}
+
+.registro h3{
+
+    color:#2e7d32;
+    margin-bottom:10px;
+
+}
+
+.registro p{
+
+    margin-bottom:8px;
+
+}
+
+.acciones-registro{
+
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+
+}
+
+/* ============================
+   MENSAJE DE ÉXITO
+============================ */
+
+.mensaje-exito{
+
+    color:#2e7d32;
+    font-weight:bold;
+    text-align:center;
+    margin-top:15px;
+
+}
