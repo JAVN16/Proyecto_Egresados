@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registro de egresado</title>
+    <title>Gestión de egresados</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -50,174 +50,194 @@
 
     </nav>
 
-<main>
+    <main>
 
-    <section class="formulario">
+        <section class="formulario">
 
-        <h2>Registro de egresado</h2>
+            <h2>Gestión de egresados</h2>
 
-        <p class="descripcion-formulario">
-            Complete la información solicitada para registrar un nuevo egresado dentro del sistema.
-        </p>
+            <p class="descripcion-formulario">
+                Complete la información para registrar o actualizar un egresado dentro del sistema.
+            </p>
 
-        <form>
+            <form id="formEgresado">
 
-            <fieldset>
+                <fieldset>
 
-                <legend>Información personal</legend>
+                    <legend>Información personal</legend>
 
-                <div>
+                    <div>
 
-                    <label for="nombre">
-                        Nombre
-                    </label>
+                        <label for="nombre">
+                            Nombre
+                        </label>
 
-                    <input
-                        type="text"
-                        id="nombre"
-                        placeholder="Ingrese el nombre"
-                        required>
+                        <input
+                            type="text"
+                            id="nombre"
+                            placeholder="Ingrese el nombre">
 
-                </div>
+                        <p id="errorNombre" class="mensaje-error"></p>
 
-                <div>
+                    </div>
 
-                    <label for="apellido">
-                        Apellidos
-                    </label>
+                    <div>
 
-                    <input
-                        type="text"
-                        id="apellido"
-                        placeholder="Ingrese los apellidos"
-                        required>
+                        <label for="apellido">
+                            Apellidos
+                        </label>
 
-                </div>
+                        <input
+                            type="text"
+                            id="apellido"
+                            placeholder="Ingrese los apellidos">
 
-                <div>
+                        <p id="errorApellido" class="mensaje-error"></p>
 
-                    <label for="identificacion">
-                        Identificación
-                    </label>
+                    </div>
 
-                    <input
-                        type="text"
-                        id="identificacion"
-                        placeholder="Ejemplo: 1-2345-6789"
-                        required>
+                    <div>
 
-                </div>
+                        <label for="identificacion">
+                            Identificación
+                        </label>
 
-                <div>
+                        <input
+                            type="text"
+                            id="identificacion"
+                            placeholder="Ejemplo: 1-2345-6789">
 
-                    <label for="fechaNacimiento">
-                        Fecha de nacimiento
-                    </label>
+                        <p id="errorIdentificacion" class="mensaje-error"></p>
 
-                    <input
-                        type="date"
-                        id="fechaNacimiento"
-                        required>
+                    </div>
 
-                </div>
+                    <div>
 
-            </fieldset>
+                        <label for="fechaNacimiento">
+                            Fecha de nacimiento
+                        </label>
 
-            <fieldset>
+                        <input
+                            type="date"
+                            id="fechaNacimiento">
 
-                <legend>Información de contacto</legend>
+                        <p id="errorFechaNacimiento" class="mensaje-error"></p>
 
-                <div>
+                    </div>
 
-                    <label for="correo">
-                        Correo electrónico
-                    </label>
+                </fieldset>
 
-                    <input
-                        type="email"
-                        id="correo"
-                        placeholder="usuario@correo.com"
-                        required>
+                <fieldset>
 
-                </div>
+                    <legend>Información de contacto</legend>
 
-                <div>
+                    <div>
 
-                    <label for="telefono">
-                        Teléfono
-                    </label>
+                        <label for="correo">
+                            Correo electrónico
+                        </label>
 
-                    <input
-                        type="tel"
-                        id="telefono"
-                        placeholder="8888-8888"
-                        required>
+                        <input
+                            type="email"
+                            id="correo"
+                            placeholder="usuario@correo.com">
 
-                </div>
+                        <p id="errorCorreo" class="mensaje-error"></p>
 
-            </fieldset>
+                    </div>
 
-            <fieldset>
+                    <div>
 
-                <legend>Información académica</legend>
+                        <label for="telefono">
+                            Teléfono
+                        </label>
 
-                <div>
+                        <input
+                            type="tel"
+                            id="telefono"
+                            placeholder="8888-8888">
 
-                    <label for="carrera">
-                        Carrera
-                    </label>
+                        <p id="errorTelefono" class="mensaje-error"></p>
 
-                    <input
-                        type="text"
-                        id="carrera"
-                        placeholder="Seleccione o escriba la carrera"
-                        required>
+                    </div>
 
-                </div>
+                </fieldset>
 
-                <div>
+                <fieldset>
 
-                    <label for="titulo">
-                        Título obtenido
-                    </label>
+                    <legend>Información académica</legend>
 
-                    <input
-                        type="text"
-                        id="titulo"
-                        placeholder="Ejemplo: Técnico en Desarrollo de Software"
-                        required>
+                    <div>
 
-                </div>
+                        <label for="carrera">
+                            Carrera
+                        </label>
 
-                <div>
+                        <input
+                            type="text"
+                            id="carrera"
+                            placeholder="Seleccione o escriba la carrera">
 
-                    <label for="graduacion">
-                        Año de graduación
-                    </label>
+                        <p id="errorCarrera" class="mensaje-error"></p>
 
-                    <input
-                        type="number"
-                        id="graduacion"
-                        min="1980"
-                        max="2100"
-                        placeholder="2026"
-                        required>
+                    </div>
 
-                </div>
+                    <div>
 
-            </fieldset>
+                        <label for="titulo">
+                            Título obtenido
+                        </label>
 
-            <button type="submit">
+                        <input
+                            type="text"
+                            id="titulo"
+                            placeholder="Ejemplo: Técnico en Desarrollo de Software">
 
-                Registrar egresado
+                        <p id="errorTitulo" class="mensaje-error"></p>
 
-            </button>
+                    </div>
 
-        </form>
+                    <div>
 
-    </section>
+                        <label for="graduacion">
+                            Año de graduación
+                        </label>
 
-</main>
+                        <input
+                            type="number"
+                            id="graduacion"
+                            placeholder="2026">
+
+                        <p id="errorGraduacion" class="mensaje-error"></p>
+
+                    </div>
+
+                </fieldset>
+
+                <button type="submit" id="botonEgresado">
+                    Registrar egresado
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <section class="tarjeta">
+
+            <h2>Egresados registrados</h2>
+
+            <p>
+                Consulte, edite o elimine los egresados registrados en el sistema.
+            </p>
+
+            <div id="listaEgresados" class="lista-registros">
+
+            </div>
+
+        </section>
+
+    </main>
 
     <footer>
 
@@ -230,6 +250,8 @@
         </p>
 
     </footer>
+
+    <script src="js/egresados.js"></script>
 
 </body>
 
