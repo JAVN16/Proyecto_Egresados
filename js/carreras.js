@@ -62,19 +62,19 @@ function validarCarrera(){
 }
 
 
-function obtenerCarreras(){
+async function obtenerCarreras(){
 
-    fetch("http://localhost:3000/carreras", {
+    try{
 
-        method: "GET",
+        const response = await fetch("http://localhost:3000/carreras", {
 
-        headers: {
-            "Content-Type": "application/json"
-        }
+            method: "GET",
 
-    })
+            headers: {
+                "Content-Type": "application/json"
+            }
 
-    .then(function(response){
+        });
 
         if(!response.ok){
 
@@ -82,29 +82,23 @@ function obtenerCarreras(){
 
         }
 
-        return response.json();
-
-    })
-
-    .then(function(listaCarreras){
+        const listaCarreras = await response.json();
 
         mostrarCarreras(listaCarreras);
 
-    })
-
-    .catch(function(error){
+    }catch(error){
 
         listaCarrerasHTML.innerHTML =
             "<p>No se pudieron cargar las carreras.</p>";
 
         console.error(error);
 
-    });
+    }
 
 }
 
 
-function registrarCarrera(){
+async function registrarCarrera(){
 
     let carrera = {
 
@@ -113,38 +107,31 @@ function registrarCarrera(){
 
     };
 
+    try{
 
-    fetch("http://localhost:3000/carreras", {
+        const response = await fetch("http://localhost:3000/carreras", {
 
-        method: "POST",
+            method: "POST",
 
-        headers: {
-            "Content-Type": "application/json"
-        },
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-        body: JSON.stringify(carrera)
+            body: JSON.stringify(carrera)
 
-    })
-
-    .then(function(response){
+        });
 
         if(!response.ok){
 
-            return response.json().then(function(datos){
+            const datos = await response.json();
 
-                throw new Error(
-                    datos.mensaje || "No se pudo registrar la carrera."
-                );
-
-            });
+            throw new Error(
+                datos.mensaje || "No se pudo registrar la carrera."
+            );
 
         }
 
-        return response.json();
-
-    })
-
-    .then(function(datos){
+        const datos = await response.json();
 
         console.log("Carrera registrada:");
         console.log(datos);
@@ -155,17 +142,15 @@ function registrarCarrera(){
 
         limpiarErroresCarrera();
 
-        obtenerCarreras();
+        await obtenerCarreras();
 
-    })
-
-    .catch(function(error){
+    }catch(error){
 
         alert(error.message);
 
         console.error(error);
 
-    });
+    }
 
 }
 
