@@ -1,19 +1,12 @@
 const formularioCarrera = document.querySelector("#formCarrera");
 
 const nombreCarrera = document.getElementById("nombreCarrera");
-const codigoCarrera = document.getElementById("codigoCarrera");
-const escuela = document.getElementById("escuela");
-const duracion = document.getElementById("duracion");
+const descripcionCarrera = document.getElementById("descripcionCarrera");
 
 const errorNombreCarrera = document.getElementById("errorNombreCarrera");
-const errorCodigoCarrera = document.getElementById("errorCodigoCarrera");
-const errorEscuela = document.getElementById("errorEscuela");
-const errorDuracion = document.getElementById("errorDuracion");
+const errorDescripcionCarrera = document.getElementById("errorDescripcionCarrera");
 
 const listaCarrerasHTML = document.getElementById("listaCarreras");
-const botonCarrera = document.getElementById("botonCarrera");
-
-let indiceEdicionCarrera = null;
 
 
 formularioCarrera.addEventListener("submit", function(evento){
@@ -26,7 +19,7 @@ formularioCarrera.addEventListener("submit", function(evento){
 
     if(hayErrores == false){
 
-        guardarCarrera();
+        registrarCarrera();
 
     }
 
@@ -38,8 +31,6 @@ function validarCarrera(){
     let error = false;
 
     const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,50}$/;
-    const regexCodigo = /^[A-Za-z]{2,5}-[0-9]{3}$/;
-    const regexEscuela = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,50}$/;
 
 
     if(nombreCarrera.value.trim() == ""){
@@ -57,46 +48,10 @@ function validarCarrera(){
     }
 
 
-    if(codigoCarrera.value.trim() == ""){
+    if(descripcionCarrera.value.trim() == ""){
 
-        errorCodigoCarrera.textContent = "Debe ingresar el código de la carrera.";
-        codigoCarrera.classList.add("input-error");
-        error = true;
-
-    }else if(!regexCodigo.test(codigoCarrera.value.trim())){
-
-        errorCodigoCarrera.textContent = "El código debe tener un formato como DS-001.";
-        codigoCarrera.classList.add("input-error");
-        error = true;
-
-    }
-
-
-    if(escuela.value.trim() == ""){
-
-        errorEscuela.textContent = "Debe ingresar el nombre de la escuela.";
-        escuela.classList.add("input-error");
-        error = true;
-
-    }else if(!regexEscuela.test(escuela.value.trim())){
-
-        errorEscuela.textContent = "El nombre de la escuela contiene un formato inválido.";
-        escuela.classList.add("input-error");
-        error = true;
-
-    }
-
-
-    if(duracion.value.trim() == ""){
-
-        errorDuracion.textContent = "Debe ingresar la duración de la carrera.";
-        duracion.classList.add("input-error");
-        error = true;
-
-    }else if(duracion.value < 1 || duracion.value > 10){
-
-        errorDuracion.textContent = "La duración debe estar entre 1 y 10 años.";
-        duracion.classList.add("input-error");
+        errorDescripcionCarrera.textContent = "Debe ingresar una descripción.";
+        descripcionCarrera.classList.add("input-error");
         error = true;
 
     }
@@ -109,85 +64,128 @@ function validarCarrera(){
 
 function obtenerCarreras(){
 
-    let listaCarreras = localStorage.getItem("carreras");
+    fetch("http://localhost:3000/carreras", {
 
-    if(listaCarreras == null){
+        method: "GET",
 
-        return [];
+        headers: {
+            "Content-Type": "application/json"
+        }
 
-    }else{
+    })
 
-        return JSON.parse(listaCarreras);
+    .then(function(response){
 
-    }
+        if(!response.ok){
+
+            throw new Error("No se pudieron obtener las carreras.");
+
+        }
+
+        return response.json();
+
+    })
+
+    .then(function(listaCarreras){
+
+        mostrarCarreras(listaCarreras);
+
+    })
+
+    .catch(function(error){
+
+        listaCarrerasHTML.innerHTML =
+            "<p>No se pudieron cargar las carreras.</p>";
+
+        console.error(error);
+
+    });
 
 }
 
 
-function guardarCarrera(){
-
-    let listaCarreras = obtenerCarreras();
+function registrarCarrera(){
 
     let carrera = {
 
         nombre: nombreCarrera.value.trim(),
-        codigo: codigoCarrera.value.trim(),
-        escuela: escuela.value.trim(),
-        duracion: duracion.value
+        descripcion: descripcionCarrera.value.trim()
 
     };
 
 
-    if(indiceEdicionCarrera == null){
+    fetch("http://localhost:3000/carreras", {
 
-        listaCarreras.push(carrera);
+        method: "POST",
 
-    }else{
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-        listaCarreras[indiceEdicionCarrera] = carrera;
-        indiceEdicionCarrera = null;
+        body: JSON.stringify(carrera)
 
-    }
+    })
 
+    .then(function(response){
 
-    localStorage.setItem(
-        "carreras",
-        JSON.stringify(listaCarreras)
-    );
+        if(!response.ok){
 
+            return response.json().then(function(datos){
 
-    formularioCarrera.reset();
+                throw new Error(
+                    datos.mensaje || "No se pudo registrar la carrera."
+                );
 
-    limpiarErroresCarrera();
+            });
 
-    botonCarrera.textContent = "Registrar carrera";
+        }
 
-    mostrarCarreras();
+        return response.json();
 
+    })
 
-    console.log("Carreras registradas:");
-    console.log(listaCarreras);
+    .then(function(datos){
+
+        console.log("Carrera registrada:");
+        console.log(datos);
+
+        alert("Carrera registrada correctamente.");
+
+        formularioCarrera.reset();
+
+        limpiarErroresCarrera();
+
+        obtenerCarreras();
+
+    })
+
+    .catch(function(error){
+
+        alert(error.message);
+
+        console.error(error);
+
+    });
 
 }
 
 
-function mostrarCarreras(){
-
-    let listaCarreras = obtenerCarreras();
+function mostrarCarreras(listaCarreras){
 
     listaCarrerasHTML.innerHTML = "";
 
 
     if(listaCarreras.length == 0){
 
-        listaCarrerasHTML.innerHTML = "<p>No hay carreras registradas.</p>";
+        listaCarrerasHTML.innerHTML =
+            "<p>No hay carreras registradas.</p>";
 
         return;
 
     }
 
 
-    listaCarreras.forEach(function(carrera, indice){
+    listaCarreras.forEach(function(carrera){
 
         let registro = document.createElement("article");
 
@@ -197,23 +195,10 @@ function mostrarCarreras(){
         registro.innerHTML = `
             <h3>${carrera.nombre}</h3>
 
-            <p><strong>Código:</strong> ${carrera.codigo}</p>
-
-            <p><strong>Escuela:</strong> ${carrera.escuela}</p>
-
-            <p><strong>Duración:</strong> ${carrera.duracion} años</p>
-
-            <div class="acciones-registro">
-
-                <button type="button" onclick="editarCarrera(${indice})">
-                    Editar
-                </button>
-
-                <button type="button" onclick="eliminarCarrera(${indice})">
-                    Eliminar
-                </button>
-
-            </div>
+            <p>
+                <strong>Descripción:</strong>
+                ${carrera.descripcion || "Sin descripción"}
+            </p>
         `;
 
 
@@ -224,63 +209,15 @@ function mostrarCarreras(){
 }
 
 
-function editarCarrera(indice){
-
-    let listaCarreras = obtenerCarreras();
-
-    let carrera = listaCarreras[indice];
-
-
-    nombreCarrera.value = carrera.nombre;
-    codigoCarrera.value = carrera.codigo;
-    escuela.value = carrera.escuela;
-    duracion.value = carrera.duracion;
-
-
-    indiceEdicionCarrera = indice;
-
-    botonCarrera.textContent = "Guardar cambios";
-
-    window.scrollTo(0, 0);
-
-}
-
-
-function eliminarCarrera(indice){
-
-    let listaCarreras = obtenerCarreras();
-
-    listaCarreras.splice(indice, 1);
-
-
-    localStorage.setItem(
-        "carreras",
-        JSON.stringify(listaCarreras)
-    );
-
-
-    mostrarCarreras();
-
-
-    console.log("Carreras registradas:");
-    console.log(listaCarreras);
-
-}
-
-
 function limpiarErroresCarrera(){
 
     errorNombreCarrera.textContent = "";
-    errorCodigoCarrera.textContent = "";
-    errorEscuela.textContent = "";
-    errorDuracion.textContent = "";
+    errorDescripcionCarrera.textContent = "";
 
     nombreCarrera.classList.remove("input-error");
-    codigoCarrera.classList.remove("input-error");
-    escuela.classList.remove("input-error");
-    duracion.classList.remove("input-error");
+    descripcionCarrera.classList.remove("input-error");
 
 }
 
 
-mostrarCarreras();
+obtenerCarreras();
